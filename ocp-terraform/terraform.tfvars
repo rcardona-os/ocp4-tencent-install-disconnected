@@ -10,7 +10,7 @@ public_subnet_cidr = "10.0.0.0/24"
 
 image_id = "img-dfq3gram"   # Replace with the custom image ID
 
-instance_type = "S2.MEDIUM2" # Replace with the instance type required
+instance_type = "S2.LARGE8" # Replace with the instance type required
 
 data_disk_type = "CLOUD_PREMIUM"
 

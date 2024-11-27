@@ -1,4 +1,3 @@
-
 variable "secret_id" {}
 
 variable "secret_key" {}
@@ -44,5 +43,5 @@ variable data_disk_type {
 variable "ssh_key_path" {
   description = "Name of the SSH key pair"
   type        = string
-  default     = "~/.ssh/id_rsa.pub"
+  default     = "skey-gulieqk1"
 }
