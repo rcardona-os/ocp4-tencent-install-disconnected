@@ -1,0 +1,15 @@
+
+
+resource "tencentcloud_route_table" "ocp_public_route_table" {
+  vpc_id = tencentcloud_vpc.vpc.id
+  name   = "tf-example"
+}
+
+
+resource "tencentcloud_route_table_entry" "ocp_public_route_table_entry" {
+  route_table_id         = tencentcloud_route_table.ocp_public_route_table.id
+  destination_cidr_block = "0.0.0.0/0"
+  next_type              = "EIP"
+  next_hub               = "0"
+  description            = "describe"
+}
