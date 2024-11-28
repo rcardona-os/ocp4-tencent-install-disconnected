@@ -13,7 +13,7 @@ resource "tencentcloud_instance" "registry_cvm" {
   vpc_id                     = tencentcloud_vpc.ocp_vpc.id
   subnet_id                  = tencentcloud_subnet.ocp_public_subnet.id
   orderly_security_groups    = [tencentcloud_security_group.ocp_public_security_group.id]
-  key_ids                    = [tencentcloud_key_pair.ssh_key_pair.id]
+  key_ids                    = tencentcloud_key_pair.ssh_key_pair.id
   allocate_public_ip         = true
   internet_max_bandwidth_out = 50 # Specify the maximum outbound bandwidth in Mbps
   private_ip                 = "10.0.0.5"
