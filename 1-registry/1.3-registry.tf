@@ -1,18 +1,19 @@
+
 resource "tencentcloud_key_pair" "ssh_key_pair" {
-  key_name   = "ssh-key-pair"
+  key_name   = "ssh_key_pair"
   public_key = var.public_key
 }
 
-
 # Create a CVM instance
-resource "tencentcloud_instance" "registry_cvm" {
+resource "tencentcloud_instance" "registry" {
   instance_name              = "registry"
-  availability_zone          = var.availability_zone
+  availability_zone          = data.terraform_remote_state.cloud_infra.outputs.availability_zone
   image_id                   = var.image_id     # Replace with the custom image ID
   instance_type              = var.instance_type      # Adjust instance type as needed
-  vpc_id                     = tencentcloud_vpc.ocp_vpc.id
-  subnet_id                  = tencentcloud_subnet.ocp_public_subnet.id
-  orderly_security_groups    = [tencentcloud_security_group.ocp_public_security_group.id]
+  vpc_id                     = data.terraform_remote_state.cloud_infra.outputs.vpc_id
+  subnet_id                  = data.terraform_remote_state.cloud_infra.outputs.public_subnet_id
+  orderly_security_groups    = [data.terraform_remote_state.cloud_infra.outputs.public_security_group_id]
+  depends_on                 = [tencentcloud_key_pair.ssh_key_pair]
   key_ids                    = [tencentcloud_key_pair.ssh_key_pair.id]
   allocate_public_ip         = true
   internet_max_bandwidth_out = 50 # Specify the maximum outbound bandwidth in Mbps
@@ -29,4 +30,3 @@ resource "tencentcloud_instance" "registry_cvm" {
     environment = "openshift"
   }
 }
-

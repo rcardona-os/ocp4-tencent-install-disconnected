@@ -1,6 +1,6 @@
 
-resource "tencentcloud_vpc" "ocp_vpc" {
-  name       = "ocp-vpc"
+resource "tencentcloud_vpc" "vpc" {
+  name       = "vpc"
   cidr_block = var.vpc_cidr
   tags = {
     environment = "openshift"
