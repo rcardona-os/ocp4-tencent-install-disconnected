@@ -1,14 +1,14 @@
 # CVM Instance Resource
 resource "tencentcloud_instance" "bootstrap" {
   instance_name              = "bootstrap"
-  availability_zone          = var.availability_zone_1  # Replace with your desired AZ
-  instance_type              = "S3.MEDIUM4"             # Replace with desired instance type
-  image_id                   = var.coreos_image_id     # Replace with your desired image ID
-  orderly_security_groups    = [tencentcloud_security_group.master_security_group.id]
-  private_ip                 = "10.0.1.9"
+  availability_zone          = data.terraform_remote_state.ocp_infra.outputs.availability_zone_1        # Replace with your desired AZ
+  instance_type              = var.instance_type                                                              # Replace with desired instance type
+  image_id                   = data.terraform_remote_state.ocp_infra.outputs.coreos_image_id             # Replace with your desired image ID
+  orderly_security_groups    = [data.terraform_remote_state.ocp_infra.outputs.master_security_group_id]
+  private_ip                 = tencentcloud_private_dns_record.bootstrap_a_record.record_value
 
   data_disks {
-    data_disk_size = 50               # System disk size in GB
+    data_disk_size = 100              # System disk size in GB
     data_disk_type = "CLOUD_PREMIUM"  # Disk type
     encrypt = false
   }
@@ -18,7 +18,7 @@ resource "tencentcloud_instance" "bootstrap" {
     ignition = {
       config = {
         replace = {
-          source       = "http://registry.${data.terraform_remote_state.cloud_infra_for_ocp.outputs.private_domain}:8080/bootstrap.ign"
+          source       = "http://registry.${data.terraform_remote_state.cloud_infra.outputs.private_domain}:8080/bootstrap.ign"
           verification = {}
         }
       }
@@ -32,18 +32,13 @@ resource "tencentcloud_instance" "bootstrap" {
   }))
 
   # Network Configuration
-  internet_charge_type       = "TRAFFIC_POSTPAID_BY_HOUR"                                      # Pay-as-you-go
-  internet_max_bandwidth_out = 10                                                              # Bandwidth in Mbps
-  subnet_id                  = var.ocp_private_subnet_1_cidr                                   # Replace with your subnet ID
-  vpc_id                     = data.terraform_remote_state.cloud_infra_for_ocp.outputs.vpc_id  # Replace with your VPC ID
+  internet_charge_type       = "TRAFFIC_POSTPAID_BY_HOUR"                                                # Pay-as-you-go
+  internet_max_bandwidth_out = 10                                                                        # Bandwidth in Mbps
+  subnet_id                  = data.terraform_remote_state.ocp_infra.outputs.ocp_private_subnet_1_cidr   # Replace with your subnet ID
+  vpc_id                     = data.terraform_remote_state.cloud_infra_for_ocp.outputs.vpc_id            # Replace with your VPC ID
 
   tags = {
     Environment = "openshift"
     Name        = "bootstrap"
   }
-}
-
-# Outputs
-output "bootstrap_id" {
-  value = tencentcloud_instance.bootstrap.id
 }
