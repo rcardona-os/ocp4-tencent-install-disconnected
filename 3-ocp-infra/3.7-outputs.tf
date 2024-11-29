@@ -34,6 +34,18 @@ output "master_listener_22623_id" {
   value = tencentcloud_clb_listener.master_listener_22623.id
 }
 
+output "worker_lb_id" {
+  value = tencentcloud_lb.master_lb.id
+}
+
+output "worker_listener_80_id" {
+  value = tencentcloud_clb_listener.worker_listener_80.id
+}
+
+output "master_listener_443_id" {
+  value = tencentcloud_clb_listener.worker_listener_443.id
+}
+
 output "coreos_image_id" {
   value = var.coreos_image_id
 }
