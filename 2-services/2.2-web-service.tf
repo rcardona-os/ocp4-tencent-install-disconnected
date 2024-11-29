@@ -12,11 +12,20 @@ resource "null_resource" "configure_http_server" {
 
   provisioner "remote-exec" {
     inline = [
-      # Configure web server
+      # Installing web server
       "sudo dnf install -y httpd wget jq || echo 'Packages already installed'",
+      
+      # Configure web server
+      "echo '<h1> 此主机作为 Red Hat Openshift Cluster v4 安装的网络服务器 </h1>' | sudo tee /var/www/html/index.html",
+      "sudo bash -c 'echo \"<Directory /var/www/html>\" >> /etc/httpd/conf/httpd.conf'",
+      "sudo bash -c 'echo \"    Options Indexes FollowSymLinks\" >> /etc/httpd/conf/httpd.conf'",
+      "sudo bash -c 'echo \"    AllowOverride None\" >> /etc/httpd/conf/httpd.conf'",
+      "sudo bash -c 'echo \"    Require all granted\" >> /etc/httpd/conf/httpd.conf'",
+      "sudo bash -c 'echo \"</Directory>\" >> /etc/httpd/conf/httpd.conf'",
+
+      # Starting Web Server
       "sudo systemctl enable httpd || echo 'Service already enabled'",
       "sudo systemctl start httpd || echo 'Service already started'",
-      "echo '<h1> 此主机作为 Red Hat Openshift Cluster v4 安装的网络服务器 </h1>' | sudo tee /var/www/html/index.html",
 
       # Download yq and set up
       "wget -q https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/local/bin/yq",
