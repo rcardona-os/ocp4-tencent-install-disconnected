@@ -8,8 +8,8 @@ resource "tencentcloud_instance" "bootstrap" {
   private_ip                 = tencentcloud_private_dns_record.bootstrap_a_record.record_value
 
   data_disks {
-    data_disk_size = 100              # System disk size in GB
-    data_disk_type = "CLOUD_PREMIUM"  # Disk type
+    data_disk_size = var.data_disk_size # System disk size in GB
+    data_disk_type = var.data_disk_type  # Disk type
     encrypt = false
   }
 
