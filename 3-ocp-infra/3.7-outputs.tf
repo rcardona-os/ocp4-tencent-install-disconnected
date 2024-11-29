@@ -49,7 +49,7 @@ output "master_listener_443_id" {
 output "coreos_image_id" {
   value = var.coreos_image_id
 }
-
+# test
 output "availability_zone_1" {
   value = var.availability_zone_1
 }
