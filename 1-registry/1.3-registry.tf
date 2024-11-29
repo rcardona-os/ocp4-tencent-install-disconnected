@@ -22,7 +22,7 @@ resource "tencentcloud_instance" "registry" {
 
   data_disks {
     data_disk_type = var.data_disk_type
-    data_disk_size = 100
+    data_disk_size = var.data_disk_size
     encrypt        = false
   }
 

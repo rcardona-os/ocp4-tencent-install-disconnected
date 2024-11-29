@@ -5,13 +5,13 @@ variable "secret_key" {}
 variable "availability_zone" {
   description = "Availability zone for resources"
   type        = string
-  default     = "us-west-1a" # Default availability zone
+  default     = "ap-singapore-1" # Default availability zone
 }
 
 variable "region" {
   description = "Region for deployment"
   type        = string
-  default     = "us-west-1" # Default region
+  default     = "ap-singapore" # Default region
 }
 
 variable "image_id" {
@@ -22,16 +22,19 @@ variable "image_id" {
 variable "instance_type" {
   description = "Instance type to use for installation of the registry"
   type        = string
+  default     = "S2.LARGE8"
 }
 
 variable "data_disk_type" {
   description = "Disk type to use for installation of the registry"
   type        = string
+  default     = "CLOUD_PREMIUM"
 }
 
 variable "data_disk_size" {
-  description = "Disk type to use for installation of the registry"
-  type        = string
+  description = "Instance type to provision bootstrap"
+  type        = number
+  default     = 100
 }
 
 # Define the variables for SSH key and subnet CIDR
