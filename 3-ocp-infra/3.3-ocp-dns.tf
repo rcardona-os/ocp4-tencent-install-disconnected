@@ -2,7 +2,7 @@
 
 # Add an A Record to the Private Zone
 resource "tencentcloud_private_dns_record" "api_server_a_record" {
-  zone_id      = data.terraform_remote_state.cloud_infra.outputs.private_zone.id
+  zone_id      = data.terraform_remote_state.cloud_infra.outputs.private_zone_id
   record_type  = "A"                             # Record type (A record for IPv4 address)
   record_value = "10.0.1.6"                      # The private IP address
   ttl          = 60                              # Time to live (TTL) in seconds
@@ -10,7 +10,7 @@ resource "tencentcloud_private_dns_record" "api_server_a_record" {
 }
 
 resource "tencentcloud_private_dns_record" "app_ingress_a_record" {
-  zone_id      = data.terraform_remote_state.cloud_infra.outputs.private_zone.id
+  zone_id      = data.terraform_remote_state.cloud_infra.outputs.private_zone_id
   record_type  = "A"                                # Record type (A record for IPv4 address)
   record_value = "10.0.1.7"                         # The private IP address
   ttl          = 60                                 # Time to live (TTL) in seconds
