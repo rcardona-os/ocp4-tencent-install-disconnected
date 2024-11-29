@@ -32,7 +32,6 @@ variable "ocp_private_subnet_2_cidr" {
   default     = "10.0.2.0/24"
 }
 
-
 variable "ocp_private_subnet_3_cidr" {
   description = "The CIDR block for the public subnet in the Virtual Network"
   type        = string
@@ -48,4 +47,22 @@ variable "ocp_cluster_name" {
 variable "coreos_image_id" {
   description = "image ID to use for installation of the registry"
   type        = string
+}
+
+variable "instance_type" {
+  description = "Instance type to provision bootstrap"
+  type        = string
+  default     = "S3.MEDIUM4"
+}
+
+variable "data_disk_size" {
+  description = "Instance type to provision bootstrap"
+  type        = number
+  default     = 100
+}
+
+variable "data_disk_type" {
+  description = "Instance type to provision bootstrap"
+  type        = string
+  default     = "CLOUD_PREMIUM"
 }

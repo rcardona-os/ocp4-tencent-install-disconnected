@@ -13,3 +13,9 @@ ocp_private_subnet_3_cidr = "10.0.3.0/24"
 ocp_cluster_name = "c1"
 
 coreos_image_id = "img-l8og963d"            # Replace with the custom image ID of CoreOS in the chosen region
+
+instance_type   = "S3.MEDIUM4"
+
+data_disk_size = 100              # System disk size in GB
+
+data_disk_type = "CLOUD_PREMIUM"  # Disk type
