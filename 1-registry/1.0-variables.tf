@@ -15,16 +15,21 @@ variable "region" {
 }
 
 variable "image_id" {
-  description = "image ID to use for installation of the registry"
+  description = "Image ID to use for installation of the registry"
   type        = string
 }
 
-variable instance_type {
+variable "instance_type" {
   description = "Instance type to use for installation of the registry"
   type        = string
 }
 
-variable data_disk_type {
+variable "data_disk_type" {
+  description = "Disk type to use for installation of the registry"
+  type        = string
+}
+
+variable "data_disk_size" {
   description = "Disk type to use for installation of the registry"
   type        = string
 }
