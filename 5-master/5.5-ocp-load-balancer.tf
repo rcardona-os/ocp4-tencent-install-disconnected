@@ -4,7 +4,7 @@
 
 resource "tencentcloud_lb" "master_lb" {
   name   = "master-lb"
-  vpc_id = data.terraform_remote_state.cloud_infra.outputs.vpc_id       
+  vpc_id = data.terraform_remote_state.cloud_infra_for_ocp.outputs.vpc_id       
   type   = "INTERNAL"                                                           
 }
 
@@ -27,17 +27,17 @@ resource "tencentcloud_clb_attachment" "targets_6443" {
   listener_id = tencentcloud_clb_listener.listener_6443.id
 
   targets {
-    instance_id = "master-0.${var.ocp_cluster_name}.${data.terraform_remote_state.cloud_infra.outputs.private_domain}" # Replace with actual instance ID
+    instance_id = "master-0.${var.ocp_cluster_name}.${data.terraform_remote_state.cloud_infra_for_ocp.outputs.private_domain}" # Replace with actual instance ID
     port        = 6443
   }
 
   targets {
-    instance_id = "master-1.${var.ocp_cluster_name}.${data.terraform_remote_state.cloud_infra.outputs.private_domain}" # Replace with actual instance ID
+    instance_id = "master-1.${var.ocp_cluster_name}.${data.terraform_remote_state.cloud_infra_for_ocp.outputs.private_domain}" # Replace with actual instance ID
     port        = 6443
   }
 
   targets {
-    instance_id = "master-2.${var.ocp_cluster_name}.${data.terraform_remote_state.cloud_infra.outputs.private_domain}" # Replace with actual instance ID
+    instance_id = "master-2.${var.ocp_cluster_name}.${data.terraform_remote_state.cloud_infra_for_ocp.outputs.private_domain}" # Replace with actual instance ID
     port        = 6443
   }
 }
@@ -47,17 +47,17 @@ resource "tencentcloud_clb_attachment" "targets_22623" {
   listener_id = tencentcloud_clb_listener.listener_22623.id
 
   targets {
-    instance_id = "master-0.${var.ocp_cluster_name}.${data.terraform_remote_state.cloud_infra.outputs.private_domain}" # Replace with actual instance ID
+    instance_id = "master-0.${var.ocp_cluster_name}.${data.terraform_remote_state.cloud_infra_for_ocp.outputs.private_domain}" # Replace with actual instance ID
     port        = 22623
   }
 
   targets {
-    instance_id = "master-1.${var.ocp_cluster_name}.${data.terraform_remote_state.cloud_infra.outputs.private_domain}" # Replace with actual instance ID
+    instance_id = "master-1.${var.ocp_cluster_name}.${data.terraform_remote_state.cloud_infra_for_ocp.outputs.private_domain}" # Replace with actual instance ID
     port        = 22623
   }
 
   targets {
-    instance_id = "master-2.${var.ocp_cluster_name}.${data.terraform_remote_state.cloud_infra.outputs.private_domain}" # Replace with actual instance ID
+    instance_id = "master-2.${var.ocp_cluster_name}.${data.terraform_remote_state.cloud_infra_for_ocp.outputs.private_domain}" # Replace with actual instance ID
     port        = 22623
   }
 }
@@ -69,7 +69,7 @@ resource "tencentcloud_clb_attachment" "targets_22623" {
 
 resource "tencentcloud_lb" "worker_lb" {
   name   = "worker-lb"
-  vpc_id = data.terraform_remote_state.cloud_infra.outputs.vpc_id       
+  vpc_id = data.terraform_remote_state.cloud_infra_for_ocp.outputs.vpc_id       
   type   = "INTERNAL"                                                           
 }
 
@@ -92,17 +92,17 @@ resource "tencentcloud_clb_attachment" "targets_80" {
   listener_id = tencentcloud_clb_listener.listener_6443.id
 
   targets {
-    instance_id = "worker-0.${var.ocp_cluster_name}.${data.terraform_remote_state.cloud_infra.outputs.private_domain}" # Replace with actual instance ID
+    instance_id = "worker-0.${var.ocp_cluster_name}.${data.terraform_remote_state.cloud_infra_for_ocp.outputs.private_domain}" # Replace with actual instance ID
     port        = 80
   }
 
   targets {
-    instance_id = "worker-1.${var.ocp_cluster_name}.${data.terraform_remote_state.cloud_infra.outputs.private_domain}" # Replace with actual instance ID
+    instance_id = "worker-1.${var.ocp_cluster_name}.${data.terraform_remote_state.cloud_infra_for_ocp.outputs.private_domain}" # Replace with actual instance ID
     port        = 80
   }
 
   targets {
-    instance_id = "worker-2.${var.ocp_cluster_name}.${data.terraform_remote_state.cloud_infra.outputs.private_domain}" # Replace with actual instance ID
+    instance_id = "worker-2.${var.ocp_cluster_name}.${data.terraform_remote_state.cloud_infra_for_ocp.outputs.private_domain}" # Replace with actual instance ID
     port        = 80
   }
 }
@@ -112,17 +112,17 @@ resource "tencentcloud_clb_attachment" "targets_443" {
   listener_id = tencentcloud_clb_listener.listener_443.id
 
   targets {
-    instance_id = "worker-0.${var.ocp_cluster_name}.${data.terraform_remote_state.cloud_infra.outputs.private_domain}" # Replace with actual instance ID
+    instance_id = "worker-0.${var.ocp_cluster_name}.${data.terraform_remote_state.cloud_infra_for_ocp.outputs.private_domain}" # Replace with actual instance ID
     port        = 443
   }
 
   targets {
-    instance_id = "worker-1.${var.ocp_cluster_name}.${data.terraform_remote_state.cloud_infra.outputs.private_domain}" # Replace with actual instance ID
+    instance_id = "worker-1.${var.ocp_cluster_name}.${data.terraform_remote_state.cloud_infra_for_ocp.outputs.private_domain}" # Replace with actual instance ID
     port        = 443
   }
 
   targets {
-    instance_id = "worker-2.${var.ocp_cluster_name}.${data.terraform_remote_state.cloud_infra.outputs.private_domain}" # Replace with actual instance ID
+    instance_id = "worker-2.${var.ocp_cluster_name}.${data.terraform_remote_state.cloud_infra_for_ocp.outputs.private_domain}" # Replace with actual instance ID
     port        = 443
   }
 }

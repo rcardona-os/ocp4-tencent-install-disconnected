@@ -18,7 +18,7 @@ resource "tencentcloud_instance" "bootstrap" {
     ignition = {
       config = {
         replace = {
-          source       = "http://registry.ocp4.com:8080/bootstrap.ign"
+          source       = "http://registry.${data.terraform_remote_state.cloud_infra_for_ocp.outputs.private_domain}:8080/bootstrap.ign"
           verification = {}
         }
       }
