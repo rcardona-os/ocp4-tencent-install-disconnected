@@ -17,6 +17,7 @@ variable "region" {
 variable "image_id" {
   description = "Image ID to use for installation of the registry"
   type        = string
+  default     = "img-dfq3gram"
 }
 
 variable "instance_type" {

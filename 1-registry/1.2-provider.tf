@@ -1,8 +1,8 @@
 terraform {
   required_providers {
     tencentcloud = {
-      source  = "tencentcloudstack/tencentcloud"
-      version = "~> 1.0" # Use the latest compatible version
+      source     = "tencentcloudstack/tencentcloud"
+      version    = "~> 1.0" # Use the latest compatible version
     }
   }
 }
