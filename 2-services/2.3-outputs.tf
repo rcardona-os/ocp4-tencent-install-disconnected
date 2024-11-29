@@ -1,3 +1,3 @@
-output "availability_zone_1" {
+output "Webserver" {
   value = "Visit this website to check instalation artifacts => http://${data.terraform_remote_state.registry.outputs.registry_public_ip}"
 }
