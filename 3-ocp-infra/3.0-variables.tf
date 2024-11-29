@@ -32,7 +32,6 @@ variable "ocp_private_subnet_2_cidr" {
   default     = "10.0.2.0/24"
 }
 
-
 variable "ocp_private_subnet_3_cidr" {
   description = "The CIDR block for the public subnet in the Virtual Network"
   type        = string
