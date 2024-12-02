@@ -155,6 +155,24 @@ terraform -chdir=3-ocp-infra plan -out=plan-0
 terraform -chdir=3-ocp-infra apply "plan-0"
 ```
 
+### 4 - Bootstraping
+
+#### 4.1 - Script Validation
+```bash
+terraform -chdir=4-bootstrap init
+```
+```bash
+terraform -chdir=4-bootstrap validate
+```
+
+#### 4.2 - enabling services
+```bash
+terraform -chdir=4-bootstrap plan -out=plan-0
+```
+```bash
+terraform -chdir=4-bootstrap apply "plan-0"
+```
+
 
 
 ###### Yyyyyy  ######
