@@ -1,6 +1,21 @@
 # ocp4-tencent-install-disconnected
 
+### 0 - Cloud Infra
 
+#### 0.1 - Script Validation
+```bash
+terraform -chdir=0-cloud-infra init
+```
+```bash
+terraform -chdir=0-cloud-infra validate
+```
+#### 0.2 - Infrastructure Provisioning
+```bash
+terraform -chdir=0-cloud-infra plan -out=plan-0
+```
+```bash
+terraform -chdir=0-cloud-infra plan -out=plan-0
+```
 
 #### 2 - Services Configuration
 
