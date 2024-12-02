@@ -36,7 +36,7 @@ terraform -chdir=1-registry apply "plan-0"
 
 ### 2 - Services Configuration
 
-➡️.  Make sure that the __install-config.yaml__ (already updated) and the customised cluster installation program __openshift-install__ are located in the host ${HOME} directory
+▶️  Make sure that the >__install-config.yaml__ (already updated) and the customised cluster installation program __openshift-install__ are located in the host ${HOME} directory
 
 #### 2.1 - example of __install-config.yaml__
 ```bash
