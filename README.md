@@ -98,7 +98,15 @@ release image registry.ocp4.com:8443/ocp4/openshift4@sha256:3ec3a43ded1decc18134
 release architecture amd64
 ```
 
-#### 2.3 - enabling services
+#### 2.3 - Script Validation
+```bash
+terraform -chdir=2-services init
+```
+```bash
+terraform -chdir=2-services validate
+```
+
+#### 2.4 - enabling services
 ```bash
 terraform -chdir=2-services plan -out=plan-0
 ```
