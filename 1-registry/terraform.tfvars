@@ -1,5 +1,5 @@
 
-image_id       = "img-dfq3gram"   # Replace with the custom image ID
+image_id       = "img-068l7rse"   # Replace with the custom image ID
 
 instance_type  = "S2.LARGE8" # Replace with the instance type required
 
