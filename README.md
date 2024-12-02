@@ -39,7 +39,7 @@ terraform -chdir=1-registry apply "plan-0"
 
 ♦️ Make sure that the __install-config.yaml__ (already updated) and the customised cluster installation program __openshift-install__ are located in the host ${HOME} directory
 
-- example of __install-config.yaml__
+#### 2.1 - example of __install-config.yaml__
 ```bash
 cat ~/install-config.yaml
 ```
@@ -87,7 +87,7 @@ imageContentSources:
   source: quay.io/openshift-release-dev/ocp-v4.0-art-dev
 ```
 
-- check on __openshift-install__, how to extract it from the oc command? [HERE](https://gitlab.com/rcardona/ocp4-tasks/-/blob/main/cluster-registry/mirror-registry-commons.md?ref_type=heads#generate-customized-openshift-install-binary-specifically-for-the-mirrored-registry) 
+#### 2.2 - check on __openshift-install__, how to extract it from the oc command? [HERE](https://gitlab.com/rcardona/ocp4-tasks/-/blob/main/cluster-registry/mirror-registry-commons.md?ref_type=heads#generate-customized-openshift-install-binary-specifically-for-the-mirrored-registry) 
 ```bash
 ./openshift-install version
 ```
@@ -98,6 +98,14 @@ release image registry.ocp4.com:8443/ocp4/openshift4@sha256:3ec3a43ded1decc18134
 release architecture amd64
 ```
 
+#### 2.3 - enabling services
+```bash
+terraform -chdir=2-services plan -out=plan-0
+```
+```bash
+terraform -chdir=2-services apply "plan-0"
+```
+ 
 ### 5 - Control Plane Provisioning
 
 #### 5.5 - Check on bootstrap process
