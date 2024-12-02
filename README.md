@@ -110,7 +110,7 @@ imageDigestSources:
   source: quay.io/openshift-release-dev/ocp-v4.0-art-dev
 ```
 
-#### 2.2 - check on __openshift-install__, how to extract it from the oc command? [HERE](https://gitlab.com/rcardona/ocp4-tasks/-/blob/main/cluster-registry/mirror-registry-commons.md?ref_type=heads#generate-customized-openshift-install-binary-specifically-for-the-mirrored-registry) 
+#### 2.2 - check on "__openshift-install__", how to extract it from the oc command? [HERE](https://gitlab.com/rcardona/ocp4-tasks/-/blob/main/cluster-registry/mirror-registry-commons.md?ref_type=heads#generate-customized-openshift-install-binary-specifically-for-the-mirrored-registry) 
 ```bash
 ./openshift-install version
 ```
