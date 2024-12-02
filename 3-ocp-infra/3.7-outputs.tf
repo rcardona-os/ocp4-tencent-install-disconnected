@@ -23,7 +23,7 @@ output "ocp_private_subnet_3_id" {
 }
 
 output "master_lb_id" {
-  value = tencentcloud_lb.master_lb.id
+  value = tencentcloud_clb_instance.master_lb.id
 }
 
 output "master_listener_6443_id" {
@@ -35,7 +35,7 @@ output "master_listener_22623_id" {
 }
 
 output "worker_lb_id" {
-  value = tencentcloud_lb.master_lb.id
+  value = tencentcloud_clb_instance.master_lb.id
 }
 
 output "worker_listener_80_id" {

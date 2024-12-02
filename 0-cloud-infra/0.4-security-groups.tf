@@ -4,28 +4,35 @@ resource "tencentcloud_security_group" "public_security_group" {
   description = "Security group for OpenShift with specific port rules"
 }
 
-# Allow ICMP using individual rule definitions
-resource "tencentcloud_security_group_rule" "allow_icmp_ingress" {
-  security_group_id = tencentcloud_security_group.public_security_group.id
-  type              = "ingress"
-  ip_protocol       = "ICMP"
-  cidr_ip           = "0.0.0.0/0"
-  description       = "Allow ICMP inbound traffic"
-  policy            = "accept" 
-}
+# # Allow ICMP using individual rule definitions
+# resource "tencentcloud_security_group_rule" "allow_icmp_ingress" {
+#   security_group_id = tencentcloud_security_group.public_security_group.id
+#   type              = "ingress"
+#   ip_protocol       = "ICMP"
+#   cidr_ip           = "0.0.0.0/0"
+#   description       = "Allow ICMP inbound traffic"
+#   policy            = "accept" 
+# }
 
-resource "tencentcloud_security_group_rule" "allow_icmp_egress" {
-  security_group_id = tencentcloud_security_group.public_security_group.id
-  type              = "egress"
-  ip_protocol       = "ICMP"
-  cidr_ip           = "0.0.0.0/0"
-  policy            = "accept" 
-  description       = "Allow ICMP outbound traffic"
-}
+# resource "tencentcloud_security_group_rule" "allow_icmp_egress" {
+#   security_group_id = tencentcloud_security_group.public_security_group.id
+#   type              = "egress"
+#   ip_protocol       = "ICMP"
+#   cidr_ip           = "0.0.0.0/0"
+#   policy            = "accept" 
+#   description       = "Allow ICMP outbound traffic"
+# }
 
 # Define the security group rule set
 resource "tencentcloud_security_group_rule_set" "public_security_group_rules" {
   security_group_id = tencentcloud_security_group.public_security_group.id
+
+  ingress {
+    action      = "ACCEPT"
+    cidr_block  = "0.0.0.0/0"
+    protocol    = "ICMP"
+    description = "A:Block ping3"
+  }
 
   ingress {
     action      = "ACCEPT"
@@ -60,6 +67,13 @@ resource "tencentcloud_security_group_rule_set" "public_security_group_rules" {
   }
 
 # Ensuring access to internet
+ 
+   egress {
+    action      = "ACCEPT"
+    cidr_block  = "0.0.0.0/0"
+    protocol    = "ICMP"
+    description = "A:Block ping3"
+  }
 
   egress {
     action      = "ACCEPT"
@@ -77,4 +91,5 @@ resource "tencentcloud_security_group_rule_set" "public_security_group_rules" {
     port        = "443"
     description = "Allow outbound HTTPS traffic"
   }
+
 }

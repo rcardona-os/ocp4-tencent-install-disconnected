@@ -11,5 +11,5 @@ terraform {
 provider "tencentcloud" {
   secret_id  = var.secret_id
   secret_key = var.secret_key
-  region     = data.terraform_remote_state.cloud_infra_for_ocp.outputs.region
+  region     = data.terraform_remote_state.cloud_infra.outputs.region
 }
