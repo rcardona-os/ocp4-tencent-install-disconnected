@@ -196,5 +196,21 @@ terraform -chdir=5-master apply "plan-0"
 ./openshift-install wait-for install-complete --log-level debug
 ```
 
+### 6 - Data Plane Provisioning
 
+#### 6.1 - Script Validation
+```bash
+terraform -chdir=6-worker init
+```
+```bash
+terraform -chdir=6-worker validate
+```
+
+#### 6.2 - enabling services
+```bash
+terraform -chdir=6-worker plan -out=plan-0
+```
+```bash
+terraform -chdir=6-worker apply "plan-0"
+```
 ----
