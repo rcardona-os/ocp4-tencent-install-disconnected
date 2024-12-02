@@ -41,10 +41,11 @@ variable "ocp_private_subnet_3_cidr" {
 variable "ocp_cluster_name" {
   description = "OCP cluster name"
   type        = string
-  default     = "c1"
+  default     = "a1"
 }
 
 variable "coreos_image_id" {
   description = "image ID to use for installation of the registry"
   type        = string
+  default     = "img-m8wvl0mk"
 }

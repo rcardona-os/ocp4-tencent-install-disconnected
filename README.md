@@ -137,6 +137,29 @@ terraform -chdir=2-services plan -out=plan-0
 terraform -chdir=2-services apply "plan-0"
 ```
  
+### 3 - OCP Infra
+
+#### 3.1 - Script Validation
+```bash
+terraform -chdir=3-ocp-infra init
+```
+```bash
+terraform -chdir=3-ocp-infra validate
+```
+
+#### 3.2 - enabling services
+```bash
+terraform -chdir=3-ocp-infraplan -out=plan-0
+```
+```bash
+terraform -chdir=3-ocp-infra apply "plan-0"
+```
+
+
+
+###### Yyyyyy  ######
+
+
 ### 5 - Control Plane Provisioning
 
 #### 5.5 - Check on bootstrap process
