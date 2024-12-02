@@ -28,7 +28,8 @@ resource "null_resource" "configure_http_server" {
       "sudo systemctl start httpd || echo 'Service already started'",
 
       # Download yq and set up
-      "wget -q https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/local/bin/yq",
+      "wget -q https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O yq",
+      "mv yq /usr/local/bin/",
       "sudo chmod +x /usr/local/bin/yq",
       "echo 'yq downloaded and installed'",
 
