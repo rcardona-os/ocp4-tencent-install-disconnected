@@ -26,5 +26,5 @@ done
 
 #### - fetch coreos image from Red Hat public registry
 ```bash
-wget https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.17/latest/rhcos-4.17.0-x86_64-aws.x86_64.vmdk.gz
+wget https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.17/latest/rhcos-qemu.x86_64.qcow2.gz
 ```
