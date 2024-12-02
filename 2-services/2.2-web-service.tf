@@ -35,13 +35,13 @@ resource "null_resource" "configure_http_server" {
 
       # Extract cluster name
       "export CLUSTERNAME=$(yq eval -o=json install-config.yaml | jq -r '.metadata.name')",
-      "echo 'Cluster name is $CLUSTERNAME'",
+      "echo 'Cluster name is ${CLUSTERNAME}'",
 
       # Set up ignition files
       "mkdir -p $CLUSTERNAME",
-      "cp install-config.yaml $CLUSTERNAME/",
-      "$HOME/openshift-install create ignition-configs --dir=$CLUSTERNAME",
-      "sudo cp -f $CLUSTERNAME/*.ign /var/www/html/",
+      "cp install-config.yaml ${CLUSTERNAME}/",
+      "${HOME}/openshift-install create ignition-configs --dir=${CLUSTERNAME} --log-level debug",
+      "sudo cp -f ${CLUSTERNAME}/*.ign /var/www/html/",
       "sudo chmod a+r /var/www/html/*.ign"
     ]
   }
