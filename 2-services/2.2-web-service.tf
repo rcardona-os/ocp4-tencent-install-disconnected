@@ -16,6 +16,7 @@ resource "null_resource" "configure_http_server" {
       "sudo dnf install -y httpd wget jq || echo 'Packages already installed'",
       
       # Configure web server
+      "sudo sed -i 's/^Listen 80$/Listen 8080/' /etc/httpd/conf/httpd.conf",
       "echo '<h1> 此主机作为 Red Hat Openshift Cluster v4 安装的网络服务器 </h1>' | sudo tee /var/www/html/index.html",
       "sudo bash -c 'echo \"<Directory /var/www/html>\" >> /etc/httpd/conf/httpd.conf'",
       "sudo bash -c 'echo \"    Options Indexes FollowSymLinks\" >> /etc/httpd/conf/httpd.conf'",

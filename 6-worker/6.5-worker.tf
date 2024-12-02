@@ -35,7 +35,6 @@ resource "tencentcloud_instance" "worker-1" {
 
   # Network Configuration
   internet_charge_type       = "TRAFFIC_POSTPAID_BY_HOUR"                                              # Pay-as-you-go
-  internet_max_bandwidth_out = 10                                                                      # Bandwidth in Mbps
   subnet_id                  = data.terraform_remote_state.ocp_infra.outputs.ocp_private_subnet_1_id   # Replace with your subnet ID
   vpc_id                     = data.terraform_remote_state.cloud_infra.outputs.vpc_id                  # Replace with your VPC ID
 
@@ -82,7 +81,6 @@ resource "tencentcloud_instance" "worker-2" {
 
   # Network Configuration
   internet_charge_type       = "TRAFFIC_POSTPAID_BY_HOUR"                                              # Pay-as-you-go
-  internet_max_bandwidth_out = 10                                                                      # Bandwidth in Mbps
   subnet_id                  = data.terraform_remote_state.ocp_infra.outputs.ocp_private_subnet_2_id   # Replace with your subnet ID
   vpc_id                     = data.terraform_remote_state.cloud_infra.outputs.vpc_id                  # Replace with your VPC ID
 
@@ -129,7 +127,6 @@ resource "tencentcloud_instance" "worker-3" {
 
   # Network Configuration
   internet_charge_type       = "TRAFFIC_POSTPAID_BY_HOUR"                                             # Pay-as-you-go
-  internet_max_bandwidth_out = 10                                                                     # Bandwidth in Mbps
   subnet_id                  = data.terraform_remote_state.ocp_infra.outputs.ocp_private_subnet_3_id  # Replace with your subnet ID
   vpc_id                     = data.terraform_remote_state.cloud_infra.outputs.vpc_id                 # Replace with your VPC ID
 

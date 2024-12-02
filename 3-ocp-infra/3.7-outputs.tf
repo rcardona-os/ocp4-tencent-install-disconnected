@@ -27,11 +27,11 @@ output "master_lb_id" {
 }
 
 output "master_listener_6443_id" {
-  value = tencentcloud_clb_listener.master_listener_6443.id
+  value = tencentcloud_clb_listener.master_listener_6443.listener_id
 }
 
 output "master_listener_22623_id" {
-  value = tencentcloud_clb_listener.master_listener_22623.id
+  value = tencentcloud_clb_listener.master_listener_22623.listener_id
 }
 
 output "worker_lb_id" {
@@ -39,17 +39,28 @@ output "worker_lb_id" {
 }
 
 output "worker_listener_80_id" {
-  value = tencentcloud_clb_listener.worker_listener_80.id
+  value = tencentcloud_clb_listener.worker_listener_80.listener_id
 }
 
 output "master_listener_443_id" {
-  value = tencentcloud_clb_listener.worker_listener_443.id
+  value = tencentcloud_clb_listener.worker_listener_443.listener_id
 }
 
 output "coreos_image_id" {
   value = var.coreos_image_id
 }
+
 # test
 output "availability_zone_1" {
   value = var.availability_zone_1
+}
+
+# test
+output "availability_zone_2" {
+  value = var.availability_zone_2
+}
+
+# test
+output "availability_zone_3" {
+  value = var.availability_zone_3
 }
