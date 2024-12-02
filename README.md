@@ -14,7 +14,7 @@ terraform -chdir=0-cloud-infra validate
 terraform -chdir=0-cloud-infra plan -out=plan-0
 ```
 ```bash
-terraform -chdir=0-cloud-infra plan -out=plan-0
+terraform -chdir=0-cloud-infra apply "plan-0"
 ```
 
 #### 2 - Services Configuration
