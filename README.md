@@ -173,14 +173,25 @@ terraform -chdir=4-bootstrap plan -out=plan-0
 terraform -chdir=4-bootstrap apply "plan-0"
 ```
 
-
-
-###### Yyyyyy  ######
-
-
 ### 5 - Control Plane Provisioning
 
-#### 5.5 - Check on bootstrap process
+#### 5.1 - Script Validation
+```bash
+terraform -chdir=5-master init
+```
+```bash
+terraform -chdir=5-master validate
+```
+
+#### 5.2 - enabling services
+```bash
+terraform -chdir=5-master plan -out=plan-0
+```
+```bash
+terraform -chdir=5-master apply "plan-0"
+```
+
+#### 5.3 - Check on bootstrap process
 ```bash
 ./openshift-install wait-for install-complete --log-level debug
 ```
