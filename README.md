@@ -101,7 +101,7 @@ additionalTrustBundle: |
   g9VACei7EQEF6CBWQQS4NJgw5+KeQf/wSHPIaQqb2NGDqYYfOGz/pBdH71JpVlqU
   7vBXLMg3Od8RsHssOX8KRGARtNSYAAjLMXftSPw=
   -----END CERTIFICATE-----
-imageContentSources:
+imageDigestSources:
 - mirrors:
   - registry.ocp4.com:8443/ocp4/openshift4
   source: quay.io/openshift-release-dev/ocp-release
