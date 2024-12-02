@@ -72,8 +72,7 @@ networking:
   serviceNetwork:
   - 172.30.0.0/16
 platform:
-  aws:
-    region: eu-central-1
+  none: {}
 publish: Internal
 pullSecret: '{"auths": {"registry.ocp4.com:8443": {"auth": "YWRtaW46cXVheVBhc3MxMjM="}}}'
 sshKey: |
