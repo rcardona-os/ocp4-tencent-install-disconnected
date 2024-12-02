@@ -193,7 +193,7 @@ terraform -chdir=5-master apply "plan-0"
 
 #### 5.3 - Check on bootstrap process
 ```bash
-./openshift-install wait-for install-complete --log-level debug
+./openshift-install wait-for install-complete --dir ${CLUSTERNAME} --log-level debug
 ```
 
 ### 6 - Data Plane Provisioning
