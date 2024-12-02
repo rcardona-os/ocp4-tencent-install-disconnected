@@ -44,7 +44,7 @@ terraform -chdir=1-registry apply "plan-0"
 cat ~/install-config.yaml
 ```
 
-```text
+```yaml
 apiVersion: v1
 baseDomain: ocp4.com
 compute:
@@ -90,6 +90,12 @@ imageContentSources:
 - check on __openshift-install__, how to extract it from the oc command? [HERE](https://gitlab.com/rcardona/ocp4-tasks/-/blob/main/cluster-registry/mirror-registry-commons.md?ref_type=heads#generate-customized-openshift-install-binary-specifically-for-the-mirrored-registry) 
 ```bash
 ./openshift-install version
+```
+```text
+./openshift-install 4.16.3
+built from commit e1f9f057ce87c1a4a5f3c268812fa4c9dc003cb7
+release image registry.ocp4.com:8443/ocp4/openshift4@sha256:3ec3a43ded1decc18134e5677f56037d8929f4442930f5d1156e7a77cdf1b9b3
+release architecture amd64
 ```
 
 ### 5 - Control Plane Provisioning
