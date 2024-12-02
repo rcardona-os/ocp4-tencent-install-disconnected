@@ -149,7 +149,7 @@ terraform -chdir=3-ocp-infra validate
 
 #### 3.2 - enabling services
 ```bash
-terraform -chdir=3-ocp-infraplan -out=plan-0
+terraform -chdir=3-ocp-infra plan -out=plan-0
 ```
 ```bash
 terraform -chdir=3-ocp-infra apply "plan-0"
