@@ -42,9 +42,9 @@ terraform -chdir=1-registry apply "plan-0"
 ### 5 - Control Plane Provisioning
 
 #### 5.5 - Check on bootstrap process
-```bash
-💲 ./openshift-install wait-for install-complete --log-level debug
-```
+  ```bash
+  ./openshift-install wait-for install-complete --log-level debug
+  ```
 
 
 ----
