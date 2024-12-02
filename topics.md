@@ -13,7 +13,7 @@ ${HOME}/openshift-install create ignition-configs --dir=${OCPCLUSTER}
 echo "Installing Ignition files into web path"
 cp -f ${OCPCLUSTER}/*.ign /var/www/html/
 chmod a+r /var/www/html/*.ign
-````
+```
 
 #### - validate all terraform file structure
 ```bash
@@ -22,4 +22,9 @@ do
 echo "Phase: ${FOLDER}"
 tf -chdir=${FOLDER} validate
 done
+```
+
+#### - fetch coreos image from Red Hat public registry
+```bash
+wget https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.17/latest/rhcos-4.17.0-x86_64-aws.x86_64.vmdk.gz
 ```
