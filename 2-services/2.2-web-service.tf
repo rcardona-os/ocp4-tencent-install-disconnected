@@ -35,7 +35,6 @@ resource "null_resource" "configure_http_server" {
 
       # Extract cluster name
       "export CLUSTERNAME=$(yq eval -o=json install-config.yaml | jq -r '.metadata.name')",
-      "echo \"Cluster name is: $CLUSTERNAME\"",
 
       # Set up ignition files
       "mkdir -p $CLUSTERNAME",
