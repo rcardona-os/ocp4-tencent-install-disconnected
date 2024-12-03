@@ -74,7 +74,7 @@ resource "tencentcloud_security_group_rule_set" "public_security_group_rules" {
   }
     egress {
     action      = "ACCEPT"
-    cidr_block  = "169.254.169.254/32"
+    cidr_block  = "169.254.0.23/32"
     protocol    = "TCP"
     port        = "80"
     description = "Access to instance metadata"
