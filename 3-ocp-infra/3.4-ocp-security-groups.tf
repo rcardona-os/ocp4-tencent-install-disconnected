@@ -8,25 +8,6 @@ resource "tencentcloud_security_group" "master_security_group" {
   description = "Security group for OpenShift with specific port rules"
 }
 
-# # Allow ICMP using individual rule definitions
-# resource "tencentcloud_security_group_rule" "master_allow_icmp_ingress" {
-#   security_group_id = tencentcloud_security_group.master_security_group.id
-#   type              = "ingress"
-#   ip_protocol       = "ICMP"
-#   cidr_ip           = data.terraform_remote_state.cloud_infra.outputs.vpc_cidr
-#   description       = "Allow ICMP inbound traffic"
-#   policy            = "accept" 
-# }
-
-# resource "tencentcloud_security_group_rule" "master_allow_icmp_egress" {
-#   security_group_id = tencentcloud_security_group.master_security_group.id
-#   type              = "egress"
-#   ip_protocol       = "ICMP"
-#   cidr_ip           = data.terraform_remote_state.cloud_infra.outputs.vpc_cidr
-#   policy            = "accept" 
-#   description       = "Allow ICMP outbound traffic"
-# }
-
 # Define the security group rule set
 resource "tencentcloud_security_group_rule_set" "master_security_group_rules" {
   security_group_id = tencentcloud_security_group.master_security_group.id
@@ -217,26 +198,6 @@ resource "tencentcloud_security_group" "worker_security_group" {
   name        = "master-security-group"
   description = "Security group for OpenShift with specific port rules"
 }
-
-# # Allow ICMP using individual rule definitions
-# resource "tencentcloud_security_group_rule" "worker_allow_icmp_ingress" {
-#   security_group_id = tencentcloud_security_group.worker_security_group.id
-#   type              = "ingress"
-#   ip_protocol       = "ICMP"
-#   cidr_ip           = data.terraform_remote_state.cloud_infra.outputs.vpc_cidr
-#   description       = "Allow ICMP inbound traffic"
-#   policy            = "accept" 
-# }
-
-# resource "tencentcloud_security_group_rule" "worker_allow_icmp_egress" {
-#   security_group_id = tencentcloud_security_group.worker_security_group.id
-#   type              = "egress"
-#   ip_protocol       = "ICMP"
-#   cidr_ip           = data.terraform_remote_state.cloud_infra.outputs.vpc_cidr
-#   policy            = "accept" 
-#   description       = "Allow ICMP outbound traffic"
-# }
-
 
 # Define the security group rule set
 resource "tencentcloud_security_group_rule_set" "worker_security_group_rules" {

@@ -18,12 +18,12 @@ resource "tencentcloud_instance" "bootstrap" {
     ignition = {
       config = {
         replace = {
-          source       = "http://registry.${data.terraform_remote_state.cloud_infra.outputs.private_domain}/bootstrap.ign"
+          source       = "http://registry.ocp4.com/bootstrap.ign"
           verification = {}
         }
       }
       timeouts = {}
-      version  = "2.2.0"
+      version  = "3.2.0"
     }
     networkd = {}
     passwd   = {}

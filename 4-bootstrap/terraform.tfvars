@@ -1,5 +1,4 @@
-
-instance_type   = "SA5.4XLARGE64"
+instance_type   = "S5.LARGE16"
 
 data_disk_size = 100              # System disk size in GB
 

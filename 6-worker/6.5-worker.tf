@@ -20,12 +20,12 @@ resource "tencentcloud_instance" "worker-1" {
     ignition = {
       config = {
         replace = {
-          source       = "http://registry.${data.terraform_remote_state.cloud_infra.outputs.private_domain}:8080/worker.ign"
+          source       = "http://registry.${data.terraform_remote_state.cloud_infra.outputs.private_domain}/worker.ign"
           verification = {}
         }
       }
       timeouts = {}
-      version  = "2.2.0"
+      version  = "3.2.0"
     }
     networkd = {}
     passwd   = {}
@@ -71,7 +71,7 @@ resource "tencentcloud_instance" "worker-2" {
         }
       }
       timeouts = {}
-      version  = "2.2.0"
+      version  = "3.2.0"
     }
     networkd = {}
     passwd   = {}
@@ -112,12 +112,12 @@ resource "tencentcloud_instance" "worker-3" {
     ignition = {
       config = {
         replace = {
-          source       = "http://registry.${data.terraform_remote_state.cloud_infra.outputs.private_domain}:8080/worker.ign"
+          source       = "http://registry.${data.terraform_remote_state.cloud_infra.outputs.private_domain}/worker.ign"
           verification = {}
         }
       }
       timeouts = {}
-      version  = "2.2.0"
+      version  = "3.2.0"
     }
     networkd = {}
     passwd   = {}

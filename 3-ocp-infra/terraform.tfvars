@@ -1,4 +1,4 @@
-availability_zone_1       = "ap-singapore-1"
+availability_zone_1       = "ap-singapore-4"
 
 availability_zone_2       = "ap-singapore-2"
 
