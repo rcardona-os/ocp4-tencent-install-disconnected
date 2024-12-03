@@ -347,4 +347,44 @@ resource "tencentcloud_security_group_rule_set" "worker_security_group_rules" {
     protocol    = "ICMP"
     description = "A:Block ping3"
   }
+
+  egress {
+    action      = "ACCEPT"
+    cidr_block  = "169.254.169.254/32"
+    protocol    = "TCP"
+    port        = "80"
+    description = "Access to instance metadata"
+  }
+
+  egress {
+    action      = "ACCEPT"
+    cidr_block  = "183.60.83.19/32"
+    protocol    = "TCP"
+    port        = "53"
+    description = "Access to internal Tencent DNS over TCP"
+  }
+
+  egress {
+    action      = "ACCEPT"
+    cidr_block  = "183.60.83.19/32"
+    protocol    = "UDP"
+    port        = "53"
+    description = "Access to internal Tencent DNS over UDP"
+  }
+
+  egress {
+    action      = "ACCEPT"
+    cidr_block  = "183.60.82.98/32"
+    protocol    = "TCP"
+    port        = "53"
+    description = "Access to internal Tencent DNS over TCP"
+  }
+
+  egress {
+    action      = "ACCEPT"
+    cidr_block  = "183.60.82.98/32"
+    protocol    = "UDP"
+    port        = "53"
+    description = "Access to internal Tencent DNS over UDP"
+  }
 }
