@@ -2,8 +2,8 @@
 resource "tencentcloud_instance" "bootstrap" {
   instance_name              = "bootstrap"
   availability_zone          = data.terraform_remote_state.ocp_infra.outputs.availability_zone_1        # Replace with your desired AZ
-  instance_type              = var.instance_type                                                              # Replace with desired instance type
-  image_id                   = data.terraform_remote_state.ocp_infra.outputs.coreos_image_id             # Replace with your desired image ID
+  instance_type              = var.instance_type                                                        # Replace with desired instance type
+  image_id                   = data.terraform_remote_state.ocp_infra.outputs.coreos_image_id            # Replace with your desired image ID
   orderly_security_groups    = [data.terraform_remote_state.ocp_infra.outputs.master_security_group_id]
   private_ip                 = tencentcloud_private_dns_record.bootstrap_a_record.record_value
 
@@ -14,22 +14,40 @@ resource "tencentcloud_instance" "bootstrap" {
   }
 
   # UserData encoded in Base64
-  user_data = base64encode(jsonencode({
-    ignition = {
-      config = {
-        replace = {
-          source       = "http://registry.ocp4.com/bootstrap.ign"
-          verification = {}
+  # user_data = base64encode(jsonencode({
+  #   ignition = {
+  #     config = {
+  #       replace = {
+  #         source       = "http://registry.ocp4.com/bootstrap.ign"
+  #         verification = {}
+  #       }
+  #     }
+  #     timeouts = {}
+  #     version  = "3.2.0"
+  #   }
+  #   networkd = {}
+  #   passwd   = {}
+  #   storage  = {}
+  #   systemd  = {}
+  # }))
+
+  user_data_raw = <<EOT
+  {
+    "ignition": {
+      "version": "3.2.0",
+      "config": {
+        "replace": {
+          "source": "http://registry.ocp4.com/bootstrap.ign",
+          "verification": {}
         }
       }
-      timeouts = {}
-      version  = "3.2.0"
-    }
-    networkd = {}
-    passwd   = {}
-    storage  = {}
-    systemd  = {}
-  }))
+    },
+    "networkd": {},
+    "passwd": {},
+    "storage": {},
+    "systemd": {}
+  }
+  EOT
 
   # Network Configuration
   internet_charge_type       = "TRAFFIC_POSTPAID_BY_HOUR"                                             # Pay-as-you-go
