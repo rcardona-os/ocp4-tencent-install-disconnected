@@ -112,4 +112,12 @@ resource "tencentcloud_security_group_rule_set" "public_security_group_rules" {
     description = "Access to internal Tencent DNS over UDP"
   }
 
+  egress {
+    action      = "ACCEPT"
+    cidr_block  = "0.0.0.0/0"
+    protocol    = "TCP"
+    port        = "22"
+    description = "Allow SSH access"
+  }
+
 }

@@ -24,6 +24,15 @@ tf -chdir=${FOLDER} validate
 done
 ```
 
+#### - destroy all infrastructure
+```bash
+for FOLDER in 0-cloud-infra 1-registry 2-services 3-ocp-infra 4-bootstrap 5-master 6-worker
+do
+echo "Phase: ${FOLDER}"
+tf -chdir=${FOLDER} destroy
+done
+```
+
 #### - fetch coreos image from Red Hat public registry
 ```bash
 wget https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.17/latest/rhcos-qemu.x86_64.qcow2.gz

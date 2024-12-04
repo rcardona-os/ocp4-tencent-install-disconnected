@@ -15,23 +15,26 @@ resource "tencentcloud_instance" "worker-1" {
     encrypt = false
   }
 
-  # UserData encoded in Base64
-  user_data = base64encode(jsonencode({
-    ignition = {
-      config = {
-        replace = {
-          source       = "http://registry.${data.terraform_remote_state.cloud_infra.outputs.private_domain}/worker.ign"
-          verification = {}
-        }
-      }
-      timeouts = {}
-      version  = "3.2.0"
-    }
-    networkd = {}
-    passwd   = {}
-    storage  = {}
-    systemd  = {}
-  }))
+  # # UserData encoded in Base64
+  # user_data = base64encode(jsonencode({
+  #   ignition = {
+  #     config = {
+  #       replace = {
+  #         source       = "http://registry.${data.terraform_remote_state.cloud_infra.outputs.private_domain}/worker.ign"
+  #         verification = {}
+  #       }
+  #     }
+  #     timeouts = {}
+  #     version  = "3.2.0"
+  #   }
+  #   networkd = {}
+  #   passwd   = {}
+  #   storage  = {}
+  #   systemd  = {}
+  # }))
+
+  # Reference and encode the Ignition file
+  user_data = base64encode(file("./ignition/worker.ign"))
 
   # Network Configuration
   internet_charge_type       = "TRAFFIC_POSTPAID_BY_HOUR"                                              # Pay-as-you-go
@@ -61,23 +64,26 @@ resource "tencentcloud_instance" "worker-2" {
     encrypt = false
   }
 
-  # UserData encoded in Base64
-  user_data = base64encode(jsonencode({
-    ignition = {
-      config = {
-        replace = {
-          source       = "http://registry.${data.terraform_remote_state.cloud_infra.outputs.private_domain}/worker.ign"
-          verification = {}
-        }
-      }
-      timeouts = {}
-      version  = "3.2.0"
-    }
-    networkd = {}
-    passwd   = {}
-    storage  = {}
-    systemd  = {}
-  }))
+  # # UserData encoded in Base64
+  # user_data = base64encode(jsonencode({
+  #   ignition = {
+  #     config = {
+  #       replace = {
+  #         source       = "http://registry.${data.terraform_remote_state.cloud_infra.outputs.private_domain}/worker.ign"
+  #         verification = {}
+  #       }
+  #     }
+  #     timeouts = {}
+  #     version  = "3.2.0"
+  #   }
+  #   networkd = {}
+  #   passwd   = {}
+  #   storage  = {}
+  #   systemd  = {}
+  # }))
+
+  # Reference and encode the Ignition file
+  user_data = base64encode(file("./ignition/worker.ign"))
 
   # Network Configuration
   internet_charge_type       = "TRAFFIC_POSTPAID_BY_HOUR"                                              # Pay-as-you-go
@@ -107,23 +113,26 @@ resource "tencentcloud_instance" "worker-3" {
     encrypt = false
   }
 
-  # UserData encoded in Base64
-  user_data = base64encode(jsonencode({
-    ignition = {
-      config = {
-        replace = {
-          source       = "http://registry.${data.terraform_remote_state.cloud_infra.outputs.private_domain}/worker.ign"
-          verification = {}
-        }
-      }
-      timeouts = {}
-      version  = "3.2.0"
-    }
-    networkd = {}
-    passwd   = {}
-    storage  = {}
-    systemd  = {}
-  }))
+  # # UserData encoded in Base64
+  # user_data = base64encode(jsonencode({
+  #   ignition = {
+  #     config = {
+  #       replace = {
+  #         source       = "http://registry.${data.terraform_remote_state.cloud_infra.outputs.private_domain}/worker.ign"
+  #         verification = {}
+  #       }
+  #     }
+  #     timeouts = {}
+  #     version  = "3.2.0"
+  #   }
+  #   networkd = {}
+  #   passwd   = {}
+  #   storage  = {}
+  #   systemd  = {}
+  # }))
+
+  # Reference and encode the Ignition file
+  user_data = base64encode(file("./ignition/worker.ign"))
 
   # Network Configuration
   internet_charge_type       = "TRAFFIC_POSTPAID_BY_HOUR"                                             # Pay-as-you-go

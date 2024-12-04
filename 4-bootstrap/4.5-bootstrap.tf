@@ -13,41 +13,41 @@ resource "tencentcloud_instance" "bootstrap" {
     encrypt = false
   }
 
-  # UserData encoded in Base64
-  # user_data = base64encode(jsonencode({
-  #   ignition = {
-  #     config = {
-  #       replace = {
-  #         source       = "http://registry.ocp4.com/bootstrap.ign"
-  #         verification = {}
-  #       }
-  #     }
-  #     timeouts = {}
-  #     version  = "3.2.0"
-  #   }
-  #   networkd = {}
-  #   passwd   = {}
-  #   storage  = {}
-  #   systemd  = {}
-  # }))
-
-  user_data_raw = <<EOT
-  {
-    "ignition": {
-      "version": "3.2.0",
-      "config": {
-        "replace": {
-          "source": "http://registry.ocp4.com/bootstrap.ign",
-          "verification": {}
+  #UserData encoded in Base64
+  user_data = base64encode(jsonencode({
+    ignition = {
+      config = {
+        replace = {
+          source       = "http://registry.ocp4.com/bootstrap.ign"
+          verification = {}
         }
       }
-    },
-    "networkd": {},
-    "passwd": {},
-    "storage": {},
-    "systemd": {}
-  }
-  EOT
+      timeouts = {}
+      version  = "3.2.0"
+    }
+    networkd = {}
+    passwd   = {}
+    storage  = {}
+    systemd  = {}
+  }))
+
+  # user_data_raw = <<EOT
+  # {
+  #   "ignition": {
+  #     "version": "3.2.0",
+  #     "config": {
+  #       "replace": {
+  #         "source": "http://registry.ocp4.com/bootstrap.ign",
+  #         "verification": {}
+  #       }
+  #     }
+  #   },
+  #   "networkd": {},
+  #   "passwd": {},
+  #   "storage": {},
+  #   "systemd": {}
+  # }
+  # EOT
 
   # Network Configuration
   internet_charge_type       = "TRAFFIC_POSTPAID_BY_HOUR"                                             # Pay-as-you-go

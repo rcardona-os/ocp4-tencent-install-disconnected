@@ -187,6 +187,14 @@ resource "tencentcloud_security_group_rule_set" "master_security_group_rules" {
     protocol    = "ICMP"
     description = "A:Block ping3"
   }
+
+  egress {
+    action      = "ACCEPT"
+    cidr_block  = data.terraform_remote_state.cloud_infra.outputs.vpc_cidr
+    protocol    = "TCP"
+    port        = "80"
+    description = "Allow HTTP inbound traffic (TCP 80)"
+  }
 }
 
 ################################################################################
@@ -386,5 +394,13 @@ resource "tencentcloud_security_group_rule_set" "worker_security_group_rules" {
     protocol    = "UDP"
     port        = "53"
     description = "Access to internal Tencent DNS over UDP"
+  }
+
+  egress {
+    action      = "ACCEPT"
+    cidr_block  = data.terraform_remote_state.cloud_infra.outputs.vpc_cidr
+    protocol    = "TCP"
+    port        = "80"
+    description = "Allow HTTP inbound traffic (TCP 80)"
   }
 }
