@@ -26,7 +26,7 @@ done
 
 #### - destroy all infrastructure
 ```bash
-for FOLDER in 0-cloud-infra 1-registry 2-services 3-ocp-infra 4-bootstrap 5-master 6-worker
+for FOLDER in 6-worker 5-master 4-bootstrap 3-ocp-infra 2-services 1-registry 0-cloud-infra
 do
 echo "Phase: ${FOLDER}"
 tf -chdir=${FOLDER} destroy
