@@ -12,4 +12,4 @@ ocp_private_subnet_3_cidr = "10.0.3.0/24"
 
 ocp_cluster_name          = "a1"
 
-coreos_image_id           = "img-gfpypspy"            # Replace with the custom image ID of CoreOS in the chosen region
+coreos_image_id           = "img-bt8q456w"            # Replace with the custom image ID of CoreOS in the chosen region
